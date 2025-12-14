@@ -17,9 +17,12 @@ permissions:
   id-token: write
   
 jobs:
-  build-and-deploy:
+  build:
     name: Build and deploy
     runs-on: ubuntu-latest
+
+    outputs:
+      repo_visibility: ${{ steps.visibility.outputs.visibility }}
 
     steps:
       # Audit
@@ -81,14 +84,24 @@ jobs:
           name: ${{ env.COVERAGE_ARTIFACT }}
           path: coverage.txt
 
-      # Deploy
-      - uses: actions/configure-pages@v5
-      # - uses: actions/checkout@v5
-      # - run: npm ci
-      # - run: npm run build
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: dist
-      - uses: actions/deploy-pages@v4
-        id: deployment
+      # Check if repo is public
+      - name: Check if repo is public
+        uses: credfeto/action-repo-visibility@v1.2.0
+        id: visibility
 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: ${{ needs.build.outputs.repo_visibility.is_visible == 'true '}}
+
+    steps:
+    - run: "Repository is public"
+    - uses: actions/configure-pages@v5
+    - uses: actions/checkout@v5
+    - run: npm ci
+    - run: npm run build
+    - uses: actions/upload-pages-artifact@v4
+      with:
+        path: dist
+    - uses: actions/deploy-pages@v4
+      id: deployment
