@@ -1,0 +1,17 @@
+/** FONTS **/
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("../lib/fonts/montserrat-regular.woff2") format("woff2");
+}
+
+/*** CONTENT ***/
+
+body {
+    font-family: "Montserrat";
+    /* background-color:#fef3f3; */
+}
+
+h2 {
+    color: #1b6200;
+}
