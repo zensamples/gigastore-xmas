@@ -55,7 +55,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: $BUILD_ARTIFACT
+          name: ${{ env.BUILD_ARTIFACT }}
           path: dist
 
   unittest:
@@ -86,11 +86,11 @@ jobs:
       run: npm ci
     
     - name: Check code coverage
-      run: npm run coverage > $COVERAGE_FILE
+      run: npm run coverage > ${{ env.COVERAGE_FILE }}
 
     - name: Upload code coverage
       uses: actions/upload-artifact@v4
       with:
-        name: $COVERAGE_ARTIFACT
+        name: ${{ env.COVERAGE_ARTIFACT }}
         path: coverage.txt
 
