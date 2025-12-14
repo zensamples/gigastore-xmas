@@ -49,11 +49,11 @@ jobs:
       - name: Build app
         run: npm run build
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.BUILD_ARTIFACT }}
-          path: dist
+      # - name: Upload artifacts
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: ${{ env.BUILD_ARTIFACT }}
+      #     path: dist
 
       # Unit testing
       # - name: Checkout
