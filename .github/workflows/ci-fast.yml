@@ -90,7 +90,8 @@ jobs:
         id: visibility
       
       - run: |
-          echo "Repo status: ${{ steps.visibility.outputs.status }}"
+          REPO_STATUS="${{ steps.visibility.outputs.status }}"
+          echo "Repository status: $REPO_STATUS"
 
   deploy:
     runs-on: ubuntu-latest
@@ -98,7 +99,6 @@ jobs:
     if: ${{ needs.build.outputs.repo_status == 'public'}}
 
     steps:
-    - run: "Repository is public"
     - uses: actions/configure-pages@v5
     - uses: actions/checkout@v5
     - run: npm ci
