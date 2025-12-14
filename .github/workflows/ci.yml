@@ -1,4 +1,8 @@
 name: CI
+env:
+  BUILD_ARTIFACT: gigastore-artifact
+  COVERAGE_ARTIFACT: gigastore-code-coverage
+  COVERAGE_FILE: coverage.txt
 
 on:
   push:
@@ -51,7 +55,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: movieclient-artifact
+          name: $BUILD_ARTIFACT
           path: dist
 
   unittest:
@@ -82,11 +86,11 @@ jobs:
       run: npm ci
     
     - name: Check code coverage
-      run: npm run coverage > coverage.txt
+      run: npm run coverage > $COVERAGE_FILE
 
     - name: Upload code coverage
       uses: actions/upload-artifact@v4
       with:
-        name: movieclient-code-coverage
+        name: $COVERAGE_ARTIFACT
         path: coverage.txt
 
