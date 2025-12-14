@@ -1,4 +1,6 @@
-export const services = [
+import type { Service } from "../models/Service";
+
+export const services: Service[] = [
 	{
 		icon: "gift",
 		title: "Emballage cadeau offert",
