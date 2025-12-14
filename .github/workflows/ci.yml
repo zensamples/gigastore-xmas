@@ -94,3 +94,17 @@ jobs:
         name: ${{ env.COVERAGE_ARTIFACT }}
         path: coverage.txt
 
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/configure-pages@v5
+    - uses: actions/checkout@v5
+    - run: npm ci
+    - run: npm run build
+    - run: actions/upload-pages-artifact@v4
+      with:
+        path: dist
+    - uses: actions/deploy-pages@v4
+      id: deployment
+
