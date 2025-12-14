@@ -90,7 +90,7 @@ jobs:
         id: visibility
       
       - run: |
-          REPO_STATUS="${{ steps.visibility.outputs.status }}"
+          REPO_STATUS="${{ env.REPO_STATUS }}"
           echo "Repository status: $REPO_STATUS"
 
   deploy:
