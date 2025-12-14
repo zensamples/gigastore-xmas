@@ -90,7 +90,7 @@ jobs:
         id: visibility
       
       - run: |
-          echo "Repo status: ${{ steps.visibility.outputs }}"
+          echo "Repo status: ${{ steps.visibility.outputs.status }}"
 
   deploy:
     runs-on: ubuntu-latest
