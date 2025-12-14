@@ -1,4 +1,4 @@
-name: CI
+name: CI (compact)
 env:
   BUILD_ARTIFACT: gigastore-artifact
   COVERAGE_ARTIFACT: gigastore-code-coverage
