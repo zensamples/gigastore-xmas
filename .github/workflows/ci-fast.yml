@@ -1,0 +1,94 @@
+name: CI
+env:
+  BUILD_ARTIFACT: gigastore-artifact
+  COVERAGE_ARTIFACT: gigastore-code-coverage
+  COVERAGE_FILE: coverage.txt
+
+on:
+  push:
+    branches: [ 'main' ]
+
+  workflow_dispatch:
+
+# Permissions (mainly for publishing on GH Pages)
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
+jobs:
+  build-and-deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # Audit
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Package audit
+        run: npm audit
+
+      # Lint
+      # - name: Checkout
+      #   uses: actions/checkout@v5
+
+      - name: Install packages
+        run: npm ci
+
+      - name: Lint code
+        run: npm run lint
+
+      # Build
+      # - name: Checkout
+      #   uses: actions/checkout@v5
+
+      # - name: Install packages
+      #   run: npm ci
+
+      - name: Build app
+        run: npm run build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.BUILD_ARTIFACT }}
+          path: dist
+
+      # Unit testing
+      # - name: Checkout
+      #   uses: actions/checkout@v5
+
+      # - name: Install packages
+      #   run: npm ci
+      
+      - name: Run unit tests
+        run: npm test
+
+      # Coverage
+      # - name: Checkout
+      #   uses: actions/checkout@v5
+
+      # - name: Install packages
+      #   run: npm ci
+      
+      - name: Check code coverage
+        run: npm run coverage > ${{ env.COVERAGE_FILE }}
+
+      - name: Upload code coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.COVERAGE_ARTIFACT }}
+          path: coverage.txt
+
+      # Deploy
+      - uses: actions/configure-pages@v5
+      # - uses: actions/checkout@v5
+      # - run: npm ci
+      # - run: npm run build
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      - uses: actions/deploy-pages@v4
+        id: deployment
+
