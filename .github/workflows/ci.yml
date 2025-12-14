@@ -10,6 +10,12 @@ on:
 
   workflow_dispatch:
 
+# Permissions (mainly for publishing on GH Pages)
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
 jobs:
   audit:
     name: Audit packages
