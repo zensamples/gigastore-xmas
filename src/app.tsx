@@ -6,6 +6,7 @@ import { Contact } from './pages/Contact'
 import { About } from './pages/About'
 import { Categories } from './pages/Categories'
 import { Offers } from './pages/Offers'
+import { NotFound } from './components/NotFound'
 
 export function App() {
   return <LocationProvider>
@@ -17,6 +18,7 @@ export function App() {
         <Route path="/offers" component={Offers} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
+        <Route component={NotFound} default />
       </Router>
     </ErrorBoundary>
   </LocationProvider>
