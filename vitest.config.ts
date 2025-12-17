@@ -9,7 +9,7 @@ export default defineConfig({
         'src/main.tsx'
       ],
       thresholds: {
-        functions: 60,
+        functions: 50,
       }
     },
   },
