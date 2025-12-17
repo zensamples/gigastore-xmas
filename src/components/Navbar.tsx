@@ -11,11 +11,11 @@ const menuOne = [
 	},
 	{
 		label: "Catégories",
-		url: "#"
+		url: "/categories"
 	},
 	{
 		label: "Offres du moment",
-		url: "#"
+		url: "/offers"
 	},
 ]
 
