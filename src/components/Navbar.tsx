@@ -6,7 +6,7 @@ import { MenuOptions } from "./MenuOptions"
 const menuOne = [
 	{
 		label: "Accueil",
-		url: "#",
+		url: "/",
 		active: true
 	},
 	{
@@ -22,11 +22,11 @@ const menuOne = [
 const menuInfo = [
 	{
 		label: "À propos",
-		url: "#"
+		url: "/about"
 	},
 	{
 		label: "Contact",
-		url: "#"
+		url: "/contact"
 	}
 ]
 

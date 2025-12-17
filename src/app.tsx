@@ -1,32 +1,19 @@
+import { ErrorBoundary, LocationProvider, Route, Router } from 'preact-iso'
 import './app.css'
-import { Container, ContainerFluid } from './components/Container'
-import { Discount } from './components/Discount'
-import { Footer } from './components/Footer'
-import { MonthSelection } from './components/MonthSelection'
 import { Navbar } from './components/Navbar'
-import { Services } from './components/Services'
-import { XMasBanner } from './components/XMasBanner'
+import { Home } from './pages/Home'
+import { Contact } from './pages/Contact'
+import { About } from './pages/About'
 
 export function App() {
-  return <>
+  return <LocationProvider>
     <Navbar />
-
-    <main>
-      <Container>
-        <XMasBanner />
-        <MonthSelection />
-      </Container>
-
-      <Container>
-        <Services />
-        <Discount />
-      </Container>
-    </main>
-
-    <ContainerFluid additionalClasses={["bg-dark"]}>
-      <Container additionalClasses={["pt-0"]}>
-        <Footer />
-      </Container>
-    </ContainerFluid>
-  </>
+    <ErrorBoundary>
+      <Router>
+        <Route path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+      </Router>
+    </ErrorBoundary>
+  </LocationProvider>
 }
