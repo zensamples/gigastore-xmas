@@ -33,7 +33,7 @@ const menuInfo = [
 export function Navbar() {
 	return <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top mb-5" aria-label="Menu principal">
 		<div class="container">
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="/">
 				<div class="text-danger d-flex">
 					<IconGift size={28} />
 					<span class="ms-2">Gigastore Noël</span>

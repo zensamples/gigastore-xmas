@@ -6,7 +6,7 @@ import { Contact } from './pages/Contact'
 import { About } from './pages/About'
 import { Categories } from './pages/Categories'
 import { Offers } from './pages/Offers'
-import { NotFound } from './components/NotFound'
+import { NotFound } from './pages/NotFound'
 
 export function App() {
   return <LocationProvider>
