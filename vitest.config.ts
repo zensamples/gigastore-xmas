@@ -39,7 +39,8 @@ export default defineConfig({
       provider: 'istanbul', // or 'istanbul'
       reporter: ['text', 'text-summary', 'lcov', 'html'],
       exclude: [
-        'src/main.tsx'
+        'src/main.tsx',
+        'src/test-browser/dummy2.spec.tsx'
       ],
       thresholds: {
         functions: 50,
