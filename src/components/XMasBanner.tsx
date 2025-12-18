@@ -18,7 +18,7 @@ export function XMasBanner() {
 		</div>
 
 		<div className="col-md-6">
-			<img class="img-fluid rounded-4 shadow-lg" src="images/noel/noel-deco.jpg" alt="" />
+			<img class="img-fluid rounded-4 shadow-lg" src="images/noel/noel-deco.jpg" alt="Merry XMas" />
 		</div>
 
 	</div>
